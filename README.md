@@ -71,3 +71,64 @@ An app for real people to create playlists and then be suggested other users (ba
    * List of users where each item is a link to that user's profile
 * Following
    * List of users where each item is a link to that user's profile
+
+## Wireframes
+<img src="wireframes.jpg" width=1200><br>
+
+## Schema 
+### Models
+#### User
+
+   | Property       | Type     | Description |
+   | -------------  | -------- | ------------|
+   | objectId       | String   | unique id for the user (default field) |
+   | name           | String   | user's full name |
+   | username       | String   | username |
+   | image          | File     | profile image |
+   | followersCount | Number   | number of followers the user has |
+   | followingCount | Number   | number of people he user is following |
+   | topSongs       | Array of Files | user's top 3 favorite songs |
+   | playlists      | Array of Pointers to Playlists   | an array of pointers to playlists |
+   | genres         | JSON Object | includes all genres the user listens to, along with their top 3 songs in each genre |
+   | followers      | Array of Pointers to Users | followers |
+   | following      | Array of Pointers to Users | following |
+   | bio            | String | user's bio |
+   | dislikedUsers  | Array of Pointers to Users | list of users that logged in user swiped left on |
+
+#### Playlist
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user playlist (default field) |
+   | author        | Pointer to User | user that created the playlist |
+   | image         | File     | album cover of first song on playlist |
+   | genres        | Array of Strings   | all the genres on the playlist |
+   | songs         | Array of Files   | all the song files on the playlist |
+
+### Networking
+#### List of network requests by screen
+   - Discover Screen
+      - (Read/GET) Query a finite number of unfollowed users with shared genres
+      - (Update/PUT) Update followers if a new user is liked
+   - Profile Screen
+      - (Read/GET) Query user's top 3 songs
+      - (Read/GET) Query user's bio
+   - Profile Screen (Playlist section)
+      - (Read/GET) Query all playlists with this user as an author
+      - (Delete) Delete existing playlist (if logged in user owns playlist)
+   - Profile Screen (Followers Section)
+      - (Read/GET) Query all followers of logged in user
+      - (Update/PUT) Follow a follower
+      - (Delete) Block a follower
+   - Profile Screen (Following Section)
+      - (Read/GET) Query all other users followed by logged in user
+      - (Delete) Unfollow
+   - Create New Playlist Screen
+      - (Create/POST) Create new playlist
+   - Individual Playlist Screen
+      - (Create/POST) Add a new song to this playlist if owned by logged in user
+      - (Read/GET) Get list of songs on this playlist
+      - (Create/POST) Add song from this playlist to another playlist owned by logged in user
+   - Edit Profile Screen
+      - (Update/PUT) Change top 3 favorite songs, bio, favorite genres, or username
+ 
