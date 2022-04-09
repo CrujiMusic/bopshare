@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">BopShareApp</string>
+
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+
+    <!-- Paste BOTH strings as required -->
+    <string name="back4app_app_id">CTauk2xEngWtEw8ouBD0jNRLVcMA5wRIPA6cWv7N</string>
+    <string name="back4app_client_key">D1D83VmnedkKvVQ8DO6isSqzNnQMIBrOyc8qyJjA</string>
 </resources>
