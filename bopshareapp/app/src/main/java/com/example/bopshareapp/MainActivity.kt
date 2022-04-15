@@ -19,4 +19,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    protected override fun onStart() {
+        super.onStart()
+    }
+
+    private fun connected() {
+
+    }
+
+    protected override fun onStop() {
+        super.onStop()
+    }
 }
