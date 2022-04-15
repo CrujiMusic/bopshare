@@ -44,6 +44,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1' // for logging API calls to LogCat
 
     implementation 'com.spotify.android:auth:2.0.2' // Maven dependency
+    implementation files('../../spotify-app-remote-release-0.7.2.aar')
+    implementation "com.google.code.gson:gson:2.8.5"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
