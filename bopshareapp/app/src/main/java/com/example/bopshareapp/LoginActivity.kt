@@ -20,6 +20,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        var builder = AuthorizationRequest.Builder(CLIENT_ID, AuthorizationResponse.Type.TOKEN, REDIRECT_URI)
+        builder.setScopes(Array<String>(1){"streaming"})
+        var request = builder.build()
+        AuthorizationClient.openLoginActivity(this,REQUEST_CODE,request)
+
         findViewById<Button>(R.id.btn_login).setOnClickListener() {
             var builder = AuthorizationRequest.Builder(CLIENT_ID, AuthorizationResponse.Type.TOKEN, REDIRECT_URI)
             builder.setScopes(Array<String>(1){"streaming"})
@@ -43,6 +48,13 @@ class LoginActivity : AppCompatActivity() {
                 Log.d("MainActivity", "Auth flow cancelled")
             }
         }
+    }
+
+    fun loginViaSpotify() {
+        var builder = AuthorizationRequest.Builder(CLIENT_ID, AuthorizationResponse.Type.TOKEN, REDIRECT_URI)
+        builder.setScopes(Array<String>(1){"streaming"})
+        var request = builder.build()
+        AuthorizationClient.openLoginActivity(this,REQUEST_CODE,request)
     }
 
     private fun goToMainActivity() {
