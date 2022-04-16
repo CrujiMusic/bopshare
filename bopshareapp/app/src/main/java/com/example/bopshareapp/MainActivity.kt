@@ -1,5 +1,6 @@
 package com.example.bopshareapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,11 @@ import com.spotify.android.appremote.api.SpotifyAppRemote
 import com.spotify.protocol.client.Subscription
 import com.spotify.protocol.types.PlayerState
 import com.spotify.protocol.types.Track
+import com.spotify.sdk.android.auth.AccountsQueryParameters.ACCESS_TOKEN
+import com.spotify.sdk.android.auth.AccountsQueryParameters.ERROR
+import com.spotify.sdk.android.auth.AuthorizationClient
+import com.spotify.sdk.android.auth.AuthorizationRequest
+import com.spotify.sdk.android.auth.AuthorizationResponse
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         val firstObject = ParseObject("FirstClass")
         firstObject.put("message", "Hey ! First message from android. Parse is now connected")
         firstObject.saveInBackground {
