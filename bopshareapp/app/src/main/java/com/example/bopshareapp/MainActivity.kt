@@ -3,6 +3,7 @@ package com.example.bopshareapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import com.parse.ParseObject
 import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
@@ -57,6 +58,12 @@ class MainActivity : AppCompatActivity() {
         spotifyAppRemote!!.playerApi.subscribeToPlayerState().setEventCallback {
             val track: Track = it.track
             Log.d("MainActivity", track.name + " by " + track.artist.name)
+        }
+        findViewById<Button>(R.id.btn_play).setOnClickListener {
+            spotifyAppRemote!!.playerApi.resume()
+        }
+        findViewById<Button>(R.id.btn_pause).setOnClickListener {
+            spotifyAppRemote!!.playerApi.pause()
         }
     }
 

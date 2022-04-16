@@ -4,15 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#00FFFFFF"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+    <Button
+        android:id="@+id/btn_play"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#00FFFFFF"
+        app:icon="@android:drawable/ic_media_play"
+        app:iconSize="100dp"
+        app:iconTint="#090909"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_pause"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#00FFFFFF"
+        app:icon="@android:drawable/ic_media_pause"
+        app:iconPadding="0dp"
+        app:iconSize="100dp"
+        app:iconTint="#090909"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_play"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
