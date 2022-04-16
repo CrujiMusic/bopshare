@@ -25,21 +25,21 @@ An app for real people to create playlists and then be suggested other users (ba
 
 **Required Must-have Stories**
 
-[x] User signs in through Spotify to access their account
-[ ] User picks their top 3 songs for each of their favorite genres
-[ ] A new user completes a short questionnaire to choose which playlists are publically available and which genres they want to display
-[ ] User can discover new users to follow by swiping right or left on their top 3 songs, which play automatically
-[ ] User can view recommended user's playlists once they’ve swiped right
-[ ] User can display profile information (about, following, followers, playlists)
-[ ] User can access the music and profiles of those they are following
+   [x] User signs in through Spotify to access their account
+   [ ] User picks their top 3 songs for each of their favorite genres
+   [ ] A new user completes a short questionnaire to choose which playlists are publically available and which genres they want to display
+   [ ] User can discover new users to follow by swiping right or left on their top 3 songs, which play automatically
+   [ ] User can view recommended user's playlists once they’ve swiped right
+   [ ] User can display profile information (about, following, followers, playlists)
+   [ ] User can access the music and profiles of those they are following
 
 **Optional Nice-to-have Stories**
 
-[ ] User can create new playlists or add to existing playlists in-app
-[ ] Settings section (accessiblity, notifications, general, etc.)
-[ ] User can choose whether to find music by shared/similar artists rather than by shared genres
-[ ] User can choose to have their genre and artist preferences auto-generated based on their playlists rather than choosing manually
-[ ] User can choose to get random recommendations (not based on any of their favorites) or popular recommendations (based on what most people are listening to)
+   [ ] User can create new playlists or add to existing playlists in-app
+   [ ] Settings section (accessiblity, notifications, general, etc.)
+   [ ] User can choose whether to find music by shared/similar artists rather than by shared genres
+   [ ] User can choose to have their genre and artist preferences auto-generated based on their playlists rather than choosing manually
+   [ ] User can choose to get random recommendations (not based on any of their favorites) or popular recommendations (based on what most people are listening to)
 
 ### Video Walkthrough
 
