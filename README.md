@@ -45,7 +45,7 @@ An app for real people to create playlists and then be suggested other users (ba
 
 Here's a walkthrough of implemented user stories:
 
-<img src='walkthrough_sprint1.gif' title='Video Walkthrough' width=250 alt='Video Walkthrough' />
+<img src='walkthrough_sprint1.gif' title='Video Walkthrough' width=224 alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
