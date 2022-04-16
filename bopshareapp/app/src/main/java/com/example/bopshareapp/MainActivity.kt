@@ -28,6 +28,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        findViewById<Button>(R.id.btn_profile).setOnClickListener() {
+            var i = Intent(this,ProfileActivity::class.java)
+            spotifyAppRemote?.playerApi?.pause()
+            startActivity(i)
+        }
+
         val firstObject = ParseObject("FirstClass")
         firstObject.put("message", "Hey ! First message from android. Parse is now connected")
         firstObject.saveInBackground {
