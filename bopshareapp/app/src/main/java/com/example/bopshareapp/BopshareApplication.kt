@@ -12,6 +12,6 @@ class BopshareApplication : Application() {
                 .clientKey(getString(R.string.back4app_client_key))
                 .server(getString(R.string.back4app_server_url))
                 .build()
-        );
+        )
     }
 }
