@@ -1,12 +1,10 @@
 package com.example.bopshareapp
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.android.volley.RequestQueue
-import com.google.gson.Gson
+import android.widget.Button
 import com.parse.*
 import com.spotify.sdk.android.auth.AuthorizationClient
 import com.spotify.sdk.android.auth.AuthorizationRequest
@@ -14,7 +12,6 @@ import com.spotify.sdk.android.auth.AuthorizationResponse
 import okhttp3.*
 import java.io.IOException
 import org.json.JSONObject
-import org.json.JSONArray
 
 class LoginActivity : AppCompatActivity() {
 
@@ -63,6 +60,18 @@ class LoginActivity : AppCompatActivity() {
                             } else {
                                 loginUser(username, spotifyId, spotifyId, token)
                             }
+                            ParseUser.getCurrentUser().saveInBackground {
+                                    if (it != null) {
+                                        it.localizedMessage?.let { message ->
+                                            Log.e(
+                                                "LoginActivity",
+                                                message
+                                            )
+                                        }
+                                    } else {
+                                        Log.d("Login Activity", "User access token updated")
+                                    }
+                                }
                             goToMainActivity()
                         }
                     }

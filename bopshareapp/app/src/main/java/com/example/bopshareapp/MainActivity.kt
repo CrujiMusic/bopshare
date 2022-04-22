@@ -9,14 +9,7 @@ import com.parse.ParseObject
 import com.spotify.android.appremote.api.ConnectionParams
 import com.spotify.android.appremote.api.Connector
 import com.spotify.android.appremote.api.SpotifyAppRemote
-import com.spotify.protocol.client.Subscription
-import com.spotify.protocol.types.PlayerState
 import com.spotify.protocol.types.Track
-import com.spotify.sdk.android.auth.AccountsQueryParameters.ACCESS_TOKEN
-import com.spotify.sdk.android.auth.AccountsQueryParameters.ERROR
-import com.spotify.sdk.android.auth.AuthorizationClient
-import com.spotify.sdk.android.auth.AuthorizationRequest
-import com.spotify.sdk.android.auth.AuthorizationResponse
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,16 +25,6 @@ class MainActivity : AppCompatActivity() {
             var i = Intent(this,ProfileActivity::class.java)
             spotifyAppRemote?.playerApi?.pause()
             startActivity(i)
-        }
-
-        val firstObject = ParseObject("FirstClass")
-        firstObject.put("message", "Hey ! First message from android. Parse is now connected")
-        firstObject.saveInBackground {
-            if (it != null) {
-                it.localizedMessage?.let { message -> Log.e("MainActivity", message) }
-            } else {
-                Log.d("MainActivity", "Object saved.")
-            }
         }
     }
 
