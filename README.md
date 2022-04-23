@@ -28,10 +28,12 @@ An app for real people to create playlists and then be suggested other users (ba
 - [x] User signs in through Spotify to access their account
 - [ ] User picks their top 3 songs for each of their favorite genres
 - [ ] A new user completes a short questionnaire to choose which playlists are publically available and which genres they want to display
-- [ ] User can discover new users to follow by swiping right or left on their top 3 songs, which play automatically
+- [ ] User can discover new users to follow by swiping right or left on their top 3 songs in a shared genre
 - [ ] User can view recommended user's playlists once they’ve swiped right
-- [ ] User can display profile information (about, following, followers, playlists)
+- [ ] User can display profile information (about, following, followers)
+- [x] User's playlists appear in profile and can be clicked on and listened to
 - [ ] User can access the music and profiles of those they are following
+- [ ] User can log out
 
 **Optional Nice-to-have Stories**
 
@@ -45,7 +47,7 @@ An app for real people to create playlists and then be suggested other users (ba
 
 Here's a walkthrough of implemented user stories:
 
-<img src='walkthrough_sprint1.gif' title='Video Walkthrough' width=224 alt='Video Walkthrough' />
+<img src='walkthrough.gif' title='Video Walkthrough' width=224 alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -94,11 +96,11 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
    | objectId       | String   | unique id for the user (default field) |
    | name           | String   | user's full name |
    | username       | String   | username |
+   | accessToken    | String   | Spotify access token for HTTP requests |
    | image          | File     | profile image |
    | followersCount | Number   | number of followers the user has |
    | followingCount | Number   | number of people he user is following |
    | topSongs       | Array of Files | user's top 3 favorite songs |
-   | playlists      | Array of Pointers to Playlists   | an array of pointers to playlists |
    | genres         | JSON Object | includes all genres the user listens to, along with their top 3 songs in each genre |
    | followers      | Array of Pointers to Users | followers |
    | following      | Array of Pointers to Users | following |
@@ -110,10 +112,24 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the user playlist (default field) |
-   | author        | Pointer to User | user that created the playlist |
-   | image         | File     | album cover of first song on playlist |
+   | user          | Pointer to User | user that created the playlist |
+   | image         | String     | url to playlist image |
+   | id            | String    | Spotify id for playlist |
+   | name          | String | the name of the playlist |
+   | public        | Boolean | whether the playlist is publically accessible |
+   | description   | String | A description of the playlist set by user |
    | genres        | Array of Strings   | all the genres on the playlist |
-   | songs         | Array of Files   | all the song files on the playlist |
+   
+#### Song
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user song (default field) |
+   | playlist      | Pointer to Playlist | playlist on which the song is saved |
+   | image         | String     | url to album cover of song |
+   | id            | String    | Spotify id for song |
+   | name          | String | the name of the song |
+   | artist        | String | the song's artist |
 
 ### Networking
 #### List of network requests by screen
