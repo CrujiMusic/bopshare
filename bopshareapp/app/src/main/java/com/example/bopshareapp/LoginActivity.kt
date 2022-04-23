@@ -60,18 +60,6 @@ class LoginActivity : AppCompatActivity() {
                             } else {
                                 loginUser(username, spotifyId, spotifyId, token)
                             }
-                            ParseUser.getCurrentUser().saveInBackground {
-                                    if (it != null) {
-                                        it.localizedMessage?.let { message ->
-                                            Log.e(
-                                                "LoginActivity",
-                                                message
-                                            )
-                                        }
-                                    } else {
-                                        Log.d("Login Activity", "User access token updated")
-                                    }
-                                }
                             goToMainActivity()
                         }
                     }
@@ -112,17 +100,26 @@ class LoginActivity : AppCompatActivity() {
                           password: String,
                           spotifyId: String,
                           accessToken: String) {
+        Log.d("LoginActivity", "Logging in parse user")
         ParseUser.logInInBackground(username, password, ({ user, e ->
             if (user != null) {
                 Log.d("LoginActivity", "Successfully logged in Parse User")
                 ParseUser.getCurrentUser().put("token",accessToken)
+                user.saveInBackground {
+                    if (it != null) {
+                        it.localizedMessage?.let { message ->
+                            Log.e(
+                                "LoginActivity",
+                                message
+                            )
+                        }
+                    }
+                }
             } else {
+                signUpUser(username,password,spotifyId,accessToken)
                 e.printStackTrace()
             }})
         )
-        if (ParseUser.getCurrentUser() == null) {
-            signUpUser(username,password,spotifyId,accessToken)
-        }
     }
 
     private fun loginViaSpotify() {

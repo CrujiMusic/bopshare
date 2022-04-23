@@ -65,7 +65,6 @@ class PlaylistsFragment : Fragment() {
                     if (!response.isSuccessful) throw IOException("Unexpected code $response")
                     val responseBody = JSONObject(response.body()!!.string())
                     var responseItems = responseBody.getJSONArray("items")
-                    var playlists : MutableList<Playlist> = mutableListOf()
                     for (i in 0 until responseItems.length()) {
                         val playlistInfo = responseItems.getJSONObject(i)
                         if (playlistInfo.getJSONObject("owner").getString("display_name").equals(ParseUser.getCurrentUser().username) && playlistInfo["type"].equals("playlist")) {

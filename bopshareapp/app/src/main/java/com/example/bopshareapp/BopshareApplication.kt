@@ -9,6 +9,7 @@ class BopshareApplication : Application() {
         super.onCreate()
 
         ParseObject.registerSubclass(Playlist::class.java)
+        ParseObject.registerSubclass(Song::class.java)
 
         Parse.initialize(
             Parse.Configuration.Builder(this)
