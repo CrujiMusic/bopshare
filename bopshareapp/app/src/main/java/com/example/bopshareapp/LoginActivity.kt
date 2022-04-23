@@ -1,12 +1,10 @@
 package com.example.bopshareapp
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.android.volley.RequestQueue
-import com.google.gson.Gson
+import android.widget.Button
 import com.parse.*
 import com.spotify.sdk.android.auth.AuthorizationClient
 import com.spotify.sdk.android.auth.AuthorizationRequest
@@ -14,7 +12,6 @@ import com.spotify.sdk.android.auth.AuthorizationResponse
 import okhttp3.*
 import java.io.IOException
 import org.json.JSONObject
-import org.json.JSONArray
 
 class LoginActivity : AppCompatActivity() {
 
@@ -103,17 +100,26 @@ class LoginActivity : AppCompatActivity() {
                           password: String,
                           spotifyId: String,
                           accessToken: String) {
+        Log.d("LoginActivity", "Logging in parse user")
         ParseUser.logInInBackground(username, password, ({ user, e ->
             if (user != null) {
                 Log.d("LoginActivity", "Successfully logged in Parse User")
                 ParseUser.getCurrentUser().put("token",accessToken)
+                user.saveInBackground {
+                    if (it != null) {
+                        it.localizedMessage?.let { message ->
+                            Log.e(
+                                "LoginActivity",
+                                message
+                            )
+                        }
+                    }
+                }
             } else {
+                signUpUser(username,password,spotifyId,accessToken)
                 e.printStackTrace()
             }})
         )
-        if (ParseUser.getCurrentUser() == null) {
-            signUpUser(username,password,spotifyId,accessToken)
-        }
     }
 
     private fun loginViaSpotify() {
