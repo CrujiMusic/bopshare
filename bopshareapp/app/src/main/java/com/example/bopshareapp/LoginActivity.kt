@@ -25,7 +25,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        loginViaSpotify()
+        findViewById<Button>(R.id.loginButton).setOnClickListener() {
+            loginViaSpotify()
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
