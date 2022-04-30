@@ -1,24 +1,30 @@
-package com.example.bopshareapp
+package com.example.bopshareapp.fragments
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
-import com.example.bopshareapp.fragments.FollowersFragment
-import com.example.bopshareapp.fragments.FollowingFragment
-import com.example.bopshareapp.fragments.PlaylistsFragment
+import com.example.bopshareapp.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class ProfileActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+class ProfileFragment : Fragment() {
 
-        val fragmentManager: FragmentManager = supportFragmentManager
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_profile, container, false)
+    }
 
-        findViewById<BottomNavigationView>(R.id.nvProfile).setOnItemSelectedListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val fragmentManager: FragmentManager = childFragmentManager
+
+        view.findViewById<BottomNavigationView>(R.id.nvProfile).setOnItemSelectedListener {
                 item ->
 
             var fragmentToShow: Fragment? = null
@@ -44,7 +50,6 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         // Set default selection
-        findViewById<BottomNavigationView>(R.id.nvProfile).selectedItemId = R.id.action_playlists
-
+        view.findViewById<BottomNavigationView>(R.id.nvProfile).selectedItemId = R.id.action_playlists
     }
 }
