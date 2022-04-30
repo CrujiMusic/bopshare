@@ -88,7 +88,9 @@ class SongActivity : AppCompatActivity() {
                     startActivity(i)
                 }
                 R.id.action_logout -> {
-                    // TODO: create logout
+                    ParseUser.logOutInBackground()
+                    val i = Intent(this,LoginActivity::class.java)
+                    startActivity(i)
                 }
             }
 

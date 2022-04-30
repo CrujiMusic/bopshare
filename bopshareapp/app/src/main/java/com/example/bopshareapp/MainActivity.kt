@@ -1,14 +1,24 @@
 package com.example.bopshareapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.bopshareapp.fragments.DiscoverFragment
 import com.example.bopshareapp.fragments.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.parse.ParseUser
+import com.spotify.sdk.android.auth.AccountsQueryParameters.CLIENT_ID
+import com.spotify.sdk.android.auth.AuthorizationClient
+import com.spotify.sdk.android.auth.AuthorizationRequest
+import com.spotify.sdk.android.auth.AuthorizationResponse
+
 
 class MainActivity : AppCompatActivity() {
+
+    private val CLIENT_ID = "ce0aa4e253dc42b8a3ec6a9ed8ff0c1b"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,7 +51,9 @@ class MainActivity : AppCompatActivity() {
                     fragmentToShow = ProfileFragment()
                 }
                 R.id.action_logout -> {
-
+                    ParseUser.logOutInBackground()
+                    val i = Intent(this,LoginActivity::class.java)
+                    startActivity(i)
                 }
             }
 
