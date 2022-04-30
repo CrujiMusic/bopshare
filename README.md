@@ -28,10 +28,10 @@ An app for real people to create playlists and then be suggested other users (ba
 - [x] User signs in through Spotify to access their account
 - [ ] User can pick their top 3 songs for each of their favorite genres
 - [ ] User can discover new users to follow by swiping right or left on their top 3 songs in a shared genre
-- [ ] User can display profile information (bio, following, followers)
+- [x] User can display profile information (bio, following, followers)
 - [x] User's playlists appear in profile and can be clicked on and listened to
 - [ ] User can access the music and profiles of those they are following
-- [ ] User can log out
+- [x] User can log out
 
 **Optional Nice-to-have Stories**
 
@@ -46,7 +46,7 @@ An app for real people to create playlists and then be suggested other users (ba
 
 Here's a walkthrough of implemented user stories:
 
-<img src='walkthrough.gif' title='Video Walkthrough' width=224 alt='Video Walkthrough' />
+<img src='walkthrough_sprint3.gif' title='Video Walkthrough' width=224 alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
